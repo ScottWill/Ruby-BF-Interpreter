@@ -81,10 +81,7 @@ class Brainfuck
       i = l
       i += 2
     end
-    
-    #puts @opt_code
   end
-  
   
   #run the bf code
   def interperate
@@ -93,10 +90,9 @@ class Brainfuck
     ops = 0
   
     mem = Array.new(30000, 0)
-    #mem.pack("c*")
     ptr, v = 0, 0
     
-    #begin
+    begin
       i = 0
       while i < @opt_code.length && ops < cap do
         case @opt_code[i]
@@ -120,16 +116,12 @@ class Brainfuck
             i = (mem[ptr] != 0) ? @opt_code[i + 1] : i
         end
         
-        #while mem[ptr] > 255
-        #  mem[ptr] -= 256
-        #end
-        
         #ops += 1
         i += 2
       end
-    #rescue
-    #  puts ""
-    #end
+    rescue
+      puts ""
+    end
   end
   
   private :optimize
